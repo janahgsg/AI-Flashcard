@@ -1,0 +1,87 @@
+:root {
+    --primary: #4f46e5;
+    --secondary: #7c3aed;
+    --text-light: #6b7280;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.folder-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    border-radius: 2px solid transparent;
+    box-shadow: 0 14px 16px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.folder-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.folder-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient);
+}
+
+.folder-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    width: 56px;
+    height: 56px;
+    background: rgba(79, 70, 229, 0.1);
+    margin-bottom: 16px;
+}
+
+.folder-icon img {
+    height: 40px;
+    width: 40px;
+}
+
+.folder-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    width: 42px;
+    height: 42px;
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.folder-action img {
+    height: 20px;
+    width: 20px;
+}
+
+.folder-action button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.folder-card h3 {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.folder-card p {
+    color: var(--text-light);
+}
+
+.folder-action {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+}
+

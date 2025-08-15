@@ -1,0 +1,16 @@
+.dashboard-content {
+    padding: 20px 80px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-content {
+        padding: 20px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-content {
+        padding: 15px;
+    }
+}
+

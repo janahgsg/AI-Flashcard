@@ -1,0 +1,37 @@
+.statistics {
+    padding: 20px 80px;
+    background: #1f2937;
+    color: white;
+}
+
+.stats-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.stats-item h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #7c3aed;
+}
+
+@media (max-width: 768px) {
+    .statistics {
+        padding: 20px 30px;
+    }
+
+    .stats-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .statistics {
+        padding: 15px;
+    }
+}
+
