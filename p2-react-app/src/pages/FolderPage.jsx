@@ -38,14 +38,14 @@ const FolderPage = () => {
   return (
     <div>
       {hasFlashCards ? (
-        <FlashCardView flashcards={currentFolder.flashcards} />
+        <FlashCardView flashcards={currentFolder.flashcards} subject={currentFolder.subject} />
       ) : (
         <FlashcardForm
           folderId={id}
-          onSave={(newFlashcards) => {
+          onSave={(newFlashcards, subject) => {
             const updatedFolders = folders.map((folder) =>
               String(folder.id) === String(id)
-                ? { ...folder, flashcards: newFlashcards }
+                ? { ...folder, flashcards: newFlashcards, subject }
                 : folder
             );
             setFolders(updatedFolders);

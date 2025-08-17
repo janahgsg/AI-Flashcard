@@ -12,7 +12,9 @@ const Homepage = () => {
       <Hero />
       <Features />
       <Statistics />
-      <Contact />
+      <section id="contact">
+        <Contact />
+      </section>
  
     </div>
   )

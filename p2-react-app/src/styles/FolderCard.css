@@ -10,7 +10,7 @@
     border-radius: 16px;
     padding: 24px;
     position: relative;
-    border-radius: 2px solid transparent;
+    border: 2px solid transparent;
     box-shadow: 0 14px 16px rgba(0, 0, 0, 0.05);
     cursor: pointer;
     overflow: hidden;
@@ -50,6 +50,9 @@
 }
 
 .folder-action {
+    position: absolute;
+    top: 20px;
+    right: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,17 +60,36 @@
     width: 42px;
     height: 42px;
     background: rgba(79, 70, 229, 0.1);
+    transition: all 0.3s ease;
+}
+
+.folder-action:hover {
+    background: rgba(239, 68, 68, 0.15);
+    transform: scale(1.05);
 }
 
 .folder-action img {
     height: 20px;
     width: 20px;
+    transition: filter 0.3s ease;
+}
+
+.folder-action:hover img {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(89%) saturate(6475%) hue-rotate(357deg) brightness(97%) contrast(97%);
 }
 
 .folder-action button {
     border: none;
     background: transparent;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    z-index: 10;
 }
 
 .folder-card h3 {
@@ -78,10 +100,3 @@
 .folder-card p {
     color: var(--text-light);
 }
-
-.folder-action {
-    position: absolute;
-    top: 20px;
-    right: 16px;
-}
-

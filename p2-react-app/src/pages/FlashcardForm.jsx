@@ -70,7 +70,7 @@ const FlashCardForm = ({ onSave }) => {
       try {
         const parsed =JSON.parse(textOutput);
         if (Array.isArray(parsed)) {
-          onSave(parsed);
+          onSave(parsed, formData.subject);
         } else {
           setErrorMessage('AI returned JSON but not an array' + textOutput);
         }

@@ -1,7 +1,8 @@
 import FolderCard from "./FolderCard"
 import '../styles/FolderList.css'
 
-const FolderList = ({ folders }) => {
+const FolderList = ({ folders, onDelete }) => {
+  
   
   //checks if the folders is empty
   if (folders.length === 0) {
@@ -12,8 +13,8 @@ const FolderList = ({ folders }) => {
     <div className='folder-list'>
         <div className="folders-grid">
             {folders.map((folder) => (
-                <FolderCard key={folder.id} folder={folder} />
-            ))};
+                <FolderCard key={folder.id} folder={folder} onDelete={onDelete} />
+            ))}
         </div>
     </div>
   )

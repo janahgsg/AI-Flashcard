@@ -4,17 +4,23 @@ import '../styles/FolderCard.css'
 import folder_icon from '/src/assets/icons/folder.png'
 import trash_icon from '/src/assets/icons/delete.png'
 
-const FolderCard = ({ folder }) => {
+const FolderCard = ({ folder, onDelete }) => {
 
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`/folder/${folder.id}`)
-  }
+  };
+
+  const handleDelete = (e) => {
+    e.stopPropagation(); //prevents opening the folder when deleting
+    onDelete(folder.id);
+  };
+
   return (
     <div className="folder-card" onClick={handleClick}>
       <div className="folder-action">
-        <button className='delete-btn'><img src={trash_icon} alt='trash-icon'/></button>
+        <button className='delete-btn'><img src={trash_icon} alt='trash-icon' onClick={handleDelete}/></button>
       </div>
         <div className="folder-icon"><img src={folder_icon} alt='folder icon'/></div>
         <h3>{folder.name}</h3>

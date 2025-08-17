@@ -1,0 +1,356 @@
+.flashcard-view {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.flashcard-content {
+  margin: 0 auto;
+  padding: 20px 80px;
+  position: relative;
+}
+
+.flashcard-view-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flashcard-view-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.flashcard-container {
+  perspective: 1000px;
+  margin: 32px 0;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-controls {
+  display: flex;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.control-btn {
+  background: rgba(79, 70, 229, 0.1);
+  border: 2px solid #4f46e5;
+  color: #4f46e5;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.control-btn:hover {
+  background: #4f46e5;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.control-btn.active {
+  background: #4f46e5;
+  color: white;
+}
+
+.progress-section {
+  margin: 20px 0;
+}
+
+.progress-status {
+  margin-bottom: 12px;
+  align-items: center;
+  text-align: left;
+}
+
+.card-counter .total-cards {
+  font-size: 1.1rem;
+  color: #374151;
+}
+
+.card-counter .current {
+  font-size: 1.3rem;
+  color: #4f46e5;
+}
+
+.progress-container {
+  position: relative;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 50%, #10b981 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  position: relative;
+  width: var(--progress-width, 0%);
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.flashcard {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: pointer;
+  animation: cardSlideIn 0.8s ease-out;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px) rotateY(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  inset: 0;
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-front {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1f2937;
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-type {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.card-back .card-type {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.card-back .flip {
+  color: white;
+}
+
+.card-content {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  font-weight: 500;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.card-back .card-content {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.flip {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.85rem;
+  color: #374151;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navigation-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: none;
+  padding: 16px 24px;
+  border-radius: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+}
+
+.nav-btn.primary:hover {
+  box-shadow: 0 12px 32px rgba(79, 70, 229, 0.3);
+}
+
+@media (max-width: 768px) {
+  .flashcard-content {
+    padding: 20px 30px;
+  }
+
+  .flashcard-view-header {
+    padding: 20px;
+  }
+
+  .flashcard {
+    height: 320px;
+  }
+
+  .flashcard-container {
+    margin: 24px 0;
+    min-height: 300px;
+  }
+
+  .card-face {
+    padding: 24px;
+  }
+
+  .navigation-controls {
+    gap: 12px;
+  }
+
+  .nav-btn {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashcard-content {
+    padding: 15px;
+  }
+
+  .flashcard {
+    height: 280px;
+  }
+
+  .flashcard-container {
+    margin: 12px 0;
+    min-height: 240px;
+  }
+
+
+  .card-face {
+    padding: 20px;
+  }
+
+  .shuffle-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .control-btn {
+    justify-content: center;
+  }
+
+  .navigation-controls {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
